@@ -18,6 +18,7 @@ const StyledAboutSection = styled.section`
     }
   }
 `;
+
 const StyledText = styled.div`
   ul.skills-list {
     display: grid;
@@ -46,6 +47,7 @@ const StyledText = styled.div`
     }
   }
 `;
+
 const StyledPic = styled.div`
   position: relative;
   max-width: 300px;
@@ -118,14 +120,21 @@ const About = () => {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (prefersReducedMotion) {
-      return;
+    if (!prefersReducedMotion) {
+      sr?.reveal(revealContainer.current, srConfig());
     }
+  }, [prefersReducedMotion]);
 
-    sr.reveal(revealContainer.current, srConfig());
-  }, []);
-
-  const skills = ['JavaScript (ES6+)', 'TypeScript', 'React', 'Eleventy', 'Node.js', 'WordPress'];
+  const skills = [
+    'Python',
+    'JavaScript',
+    'TypeScript',
+    'React',
+    'Node.js',
+    'Kubernetes',
+    'Docker',
+    'Prompt Engineering',
+  ];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -135,37 +144,49 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! My name is Brittany and I enjoy creating things that live on the internet. My
-              interest in web development started back in 2012 when I decided to try editing custom
-              Tumblr themes — turns out hacking together a custom reblog button taught me a lot
-              about HTML &amp; CSS!
+              Hello! My name is Sujendra Gharat, and I’m passionate about creating efficient and impactful
+              software solutions. My journey in tech has taken me from orchestrating API integrations
+              to developing smart applications at the forefront of cloud computing.
             </p>
 
             <p>
-              Fast-forward to today, and I’ve had the privilege of working at{' '}
-              <a href="https://us.mullenlowe.com/">an advertising agency</a>,{' '}
-              <a href="https://starry.com/">a start-up</a>,{' '}
-              <a href="https://www.apple.com/">a huge corporation</a>, and{' '}
-              <a href="https://scout.camd.northeastern.edu/">a student-led design studio</a>. My
-              main focus these days is building accessible, inclusive products and digital
-              experiences at <a href="https://upstatement.com/">Upstatement</a> for a variety of
-              clients.
+              I’ve had the privilege of working with leading companies like{' '}
+              <a
+                href="https://www.capgemini.com/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Capgemini">
+                Capgemini
+              </a> and{' '}
+              <a
+                href="https://www.ltimindtree.com/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LTIMindtree">
+                LTIMindtree
+              </a>, where I specialized in full-stack development and DevOps. Currently, I'm furthering my expertise as a
+              Graduate Research Assistant at{' '}
+              <a
+                href="https://ai-caring.org/"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="AI-CARING at Northeastern University">
+                Northeastern University’s AI-CARING project
+              </a>, focusing on ambient reminder systems and prompt engineering for enhancing user experiences.
             </p>
 
             <p>
-              I also recently{' '}
-              <a href="https://www.newline.co/courses/build-a-spotify-connected-app">
-                launched a course
-              </a>{' '}
-              that covers everything you need to build a web app with the Spotify API using Node
-              &amp; React.
+              In my free time, I enjoy playing table tennis, exploring sunset points, and appreciating the beauty of sunsets.
             </p>
+
 
             <p>Here are a few technologies I’ve been working with recently:</p>
           </div>
 
           <ul className="skills-list">
-            {skills && skills.map((skill, i) => <li key={i}>{skill}</li>)}
+            {skills.map((skill, i) => (
+              <li key={i}>{skill}</li>
+            ))}
           </ul>
         </StyledText>
 
